@@ -240,7 +240,7 @@ public final class MoneyAmountStyle implements Serializable {
             protoStyle = (protoStyle == null ? getLocalizedStyle(locale) : protoStyle);
             result = result.withGroupingCharacter(protoStyle.getGroupingCharacter());
         }
-        if (groupingSize < 0) {
+        if (groupingSize < 0 && groupingStyle != GroupingStyle.NONE) {
             protoStyle = (protoStyle == null ? getLocalizedStyle(locale) : protoStyle);
             result = result.withGroupingSize(protoStyle.getGroupingSize());
         }
