@@ -240,16 +240,13 @@ public final class MoneyAmountStyle implements Serializable {
             protoStyle = (protoStyle == null ? getLocalizedStyle(locale) : protoStyle);
             result = result.withGroupingCharacter(protoStyle.getGroupingCharacter());
         }
-        if (groupingSize < 0) {
+        if (groupingSize < 0 && groupingStyle != GroupingStyle.NONE) {
             protoStyle = (protoStyle == null ? getLocalizedStyle(locale) : protoStyle);
             result = result.withGroupingSize(protoStyle.getGroupingSize());
         }
         if (extendedGroupingSize < 0) {
             protoStyle = (protoStyle == null ? getLocalizedStyle(locale) : protoStyle);
             result = result.withExtendedGroupingSize(protoStyle.getExtendedGroupingSize());
-        }
-        if (protoStyle != null && groupingStyle != protoStyle.getGroupingStyle()) {
-            result = result.withGroupingStyle(protoStyle.getGroupingStyle());
         }
         return result;
     }
@@ -279,17 +276,11 @@ public final class MoneyAmountStyle implements Serializable {
             }
             NumberFormat format = NumberFormat.getCurrencyInstance(locale);
             int size = (format instanceof DecimalFormat ? ((DecimalFormat) format).getGroupingSize() : 3);
-            boolean groupingEnabled = format == null || format.isGroupingUsed();
-            GroupingStyle groupingStyle = GroupingStyle.FULL;
-            if (!groupingEnabled) {
-                groupingStyle = GroupingStyle.NONE;
-                size = -1;
-            }
             protoStyle = new MoneyAmountStyle(
                     symbols.getZeroDigit(),
                     '+', symbols.getMinusSign(),
                     symbols.getMonetaryDecimalSeparator(),
-                    groupingStyle, symbols.getGroupingSeparator(), size, 0, false, false);
+                    GroupingStyle.FULL, symbols.getGroupingSeparator(), size, 0, false, false);
             LOCALIZED_CACHE.putIfAbsent(locale, protoStyle);
         }
         return protoStyle;
