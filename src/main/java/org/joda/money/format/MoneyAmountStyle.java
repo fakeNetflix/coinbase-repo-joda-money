@@ -469,8 +469,8 @@ public final class MoneyAmountStyle implements Serializable {
      */
     public MoneyAmountStyle withGroupingSize(Integer groupingSize) {
         int sizeVal = (groupingSize == null ? -1 : groupingSize);
-        if (groupingSize != null && sizeVal <= 0) {
-            throw new IllegalArgumentException("Grouping size must be greater than zero");
+        if (groupingSize != null && sizeVal < 0) {
+            throw new IllegalArgumentException("Grouping size must be greater than or equal to zero");
         }
         if (sizeVal == this.groupingSize) {
             return this;

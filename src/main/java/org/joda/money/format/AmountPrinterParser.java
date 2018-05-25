@@ -110,6 +110,9 @@ final class AmountPrinterParser implements MoneyPrinter, MoneyParser, Serializab
     }
 
     private boolean isPreGroupingPoint(int remaining, int groupingSize, int extendedGroupingSize) {
+        if (groupingSize == 0) {
+            return false;
+        }
         if (remaining >= groupingSize + extendedGroupingSize) {
             return (remaining - groupingSize) % extendedGroupingSize == 0;
         }
@@ -117,6 +120,9 @@ final class AmountPrinterParser implements MoneyPrinter, MoneyParser, Serializab
     }
 
     private boolean isPostGroupingPoint(int i, int post, int groupingSize, int extendedGroupingSize) {
+        if (groupingSize == 0) {
+            return false;
+        }
         boolean atEnd = (i + 1) >= post;
         if (i > groupingSize) {
             return (i - groupingSize) % extendedGroupingSize == (extendedGroupingSize - 1) && !atEnd;
