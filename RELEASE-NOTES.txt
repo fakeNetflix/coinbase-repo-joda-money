@@ -27,3 +27,8 @@ The Joda team
 * `mvn clean deploy -Doss.repo -Dgpg.passphrase=""`
 * Release project in [Nexus](https://oss.sonatype.org)
 * Website will be built and released by Travis
+
+### Fork Release process
+* Update version (pom.xml, README.md, index.md, changes.xml)
+* `mvn clean install`
+** This creates a `joda-money-{version}.jar` in `target` folder

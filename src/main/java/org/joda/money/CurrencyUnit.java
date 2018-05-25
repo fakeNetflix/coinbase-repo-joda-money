@@ -192,9 +192,6 @@ public final class CurrencyUnit implements Comparable<CurrencyUnit>, Serializabl
         if (currencyCode.length() != 3) {
             throw new IllegalArgumentException("Invalid string code, must be length 3");
         }
-        if (CODE.matcher(currencyCode).matches() == false) {
-            throw new IllegalArgumentException("Invalid string code, must be ASCII upper-case letters");
-        }
         if (numericCurrencyCode < -1 || numericCurrencyCode > 999) {
             throw new IllegalArgumentException("Invalid numeric code");
         }
