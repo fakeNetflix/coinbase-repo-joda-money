@@ -149,16 +149,19 @@ public class TestMoneyFormatterBuilder {
         assertEquals(parsed.getCurrency(), null);
     }
 
-    public void test_appendCurrencyNumeric3Code_parse_badCurrency() {
-        iBuilder.appendCurrencyNumeric3Code();
-        MoneyFormatter test = iBuilder.toFormatter();
-        MoneyParseContext  parsed = test.parse("991A", 0);
-        assertEquals(parsed.isError(), true);
-        assertEquals(parsed.getIndex(), 0);
-        assertEquals(parsed.getErrorIndex(), 0);
-        assertEquals(parsed.getAmount(), null);
-        assertEquals(parsed.getCurrency(), null);
-    }
+    /**
+     * Coinbase removed the restriction for numeric code and length in currency
+     * public void test_appendCurrencyNumeric3Code_parse_badCurrency() {
+     *     iBuilder.appendCurrencyNumeric3Code();
+     *     MoneyFormatter test = iBuilder.toFormatter();
+     *     MoneyParseContext  parsed = test.parse("991A", 0);
+     *     assertEquals(parsed.isError(), true);
+     *     assertEquals(parsed.getIndex(), 0);
+     *     assertEquals(parsed.getErrorIndex(), 0);
+     *     assertEquals(parsed.getAmount(), null);
+     *     assertEquals(parsed.getCurrency(), null);
+     * }
+     */
 
     public void test_appendCurrencyNumeric3Code_parse_empty() {
         iBuilder.appendCurrencyNumeric3Code();
@@ -234,16 +237,19 @@ public class TestMoneyFormatterBuilder {
         assertEquals(parsed.getCurrency(), null);
     }
 
-    public void test_appendCurrencyNumericCode_parse_badCurrency() {
-        iBuilder.appendCurrencyNumericCode();
-        MoneyFormatter test = iBuilder.toFormatter();
-        MoneyParseContext  parsed = test.parse("991A", 0);
-        assertEquals(parsed.isError(), true);
-        assertEquals(parsed.getIndex(), 0);
-        assertEquals(parsed.getErrorIndex(), 0);
-        assertEquals(parsed.getAmount(), null);
-        assertEquals(parsed.getCurrency(), null);
-    }
+    /**
+     * Coinbase removed the restriction for numeric code and length in currency
+     * public void test_appendCurrencyNumericCode_parse_badCurrency() {
+     *     iBuilder.appendCurrencyNumericCode();
+     *     MoneyFormatter test = iBuilder.toFormatter();
+     *     MoneyParseContext  parsed = test.parse("991A", 0);
+     *     assertEquals(parsed.isError(), true);
+     *     assertEquals(parsed.getIndex(), 0);
+     *     assertEquals(parsed.getErrorIndex(), 0);
+     *     assertEquals(parsed.getAmount(), null);
+     *     assertEquals(parsed.getCurrency(), null);
+     * }
+     */
 
     public void test_appendCurrencyNumericCode_parse_empty() {
         iBuilder.appendCurrencyNumericCode();

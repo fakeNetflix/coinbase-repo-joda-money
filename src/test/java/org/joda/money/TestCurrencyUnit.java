@@ -67,10 +67,13 @@ public class TestCurrencyUnit {
         CurrencyUnit.registerCurrency(null, 991, 2, Arrays.asList("TS"));
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void test_registeredCurrency_invalidStringCode_empty() {
-        CurrencyUnit.registerCurrency("", 991, 2, Arrays.asList("TS"));
-    }
+    /**
+     * Coinbase removed the reg ex restriction
+     * @Test(expectedExceptions = IllegalArgumentException.class)
+     * public void test_registeredCurrency_invalidStringCode_empty() {
+     *     CurrencyUnit.registerCurrency("", 991, 2, Arrays.asList("TS"));
+     * }
+     */
 
 /*
     @Test(expectedExceptions = IllegalArgumentException.class)
@@ -121,7 +124,7 @@ public class TestCurrencyUnit {
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void test_registeredCurrency_invalidDP_big() {
-        CurrencyUnit.registerCurrency("TST", 991, 10, Arrays.asList("TS"));
+        CurrencyUnit.registerCurrency("TST", 991, 31, Arrays.asList("TS"));
     }
 
     @Test(expectedExceptions = NullPointerException.class)
